@@ -109,6 +109,8 @@ class LoginPageState extends State<LoginPage> {
                       obscureText:
                           !_passwordVisible, //This will obscure text dynamically
                       decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         hintText: 'password',
                         border: InputBorder.none,
 

@@ -154,6 +154,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       obscureText:
                           !_passwordVisible, //This will obscure text dynamically
                       decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         hintText: 'your password',
                         border: InputBorder.none,
 
@@ -192,6 +194,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       obscureText:
                           !_passwordVisible, //This will obscure text dynamically
                       decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         hintText: 'confirm password',
                         border: InputBorder.none,
 

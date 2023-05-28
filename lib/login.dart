@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:insuranceapp/register.dart';
 
 class LoginPage extends StatefulWidget {
-  // final VoidCallback showRegisterPage;
-  // const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
-
   @override
   State<LoginPage> createState() => LoginPageState();
 }
@@ -16,21 +14,20 @@ class LoginPageState extends State<LoginPage> {
   bool _passwordVisible = true;
 
   Future signIn() async {
-    //   try {
-    //     // await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //     //   email: _emailController.text.trim(),
-    //     //   password: _passwordController.text.trim(),
-    //     // );
-    //   } on FirebaseAuthException catch (e) {
-    //   //   showDialog(
-    //   //       context: context,
-    //   //       builder: (context) {
-    //   //         return AlertDialog(
-    //   //           title: Text("${e.message}"),
-    //   //         );
-    //   //       });
-    //   // }
-    // }
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("${e.message}"),
+            );
+          });
+    }
   }
 
   @override
@@ -66,7 +63,7 @@ class LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 10),
 
                 const Text(
-                  'Welcome to E-Insurance',
+                  'স্বাগতম শিক্ষার্থী / টিউটর',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -89,7 +86,7 @@ class LoginPageState extends State<LoginPage> {
                         controller: _emailController,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Email',
+                          hintText: 'ইমেইল',
                         ),
                       ),
                     ),
@@ -112,7 +109,7 @@ class LoginPageState extends State<LoginPage> {
                       obscureText:
                           !_passwordVisible, //This will obscure text dynamically
                       decoration: InputDecoration(
-                        hintText: 'password',
+                        hintText: 'তোমার পাসওয়ার্ড দাও',
                         border: InputBorder.none,
 
                         // Here is key idea
@@ -145,15 +142,14 @@ class LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: GestureDetector(
                         onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) =>
-                          //               const ForgotPassPage()));
-                          //
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             const ForgotPassPage()));
                         },
                         child: const Text(
-                          "Forgot password?",
+                          "পাসওয়ার্ড ভুলে গেছো ?",
                           style: TextStyle(
                             color: Color.fromARGB(255, 255, 0, 0),
                             fontWeight: FontWeight.bold,
@@ -172,12 +168,12 @@ class LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: const Color.fromARGB(255, 255, 0, 0),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Center(
                         child: Text(
-                          'Sign In',
+                          'সাইন ইন',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -195,7 +191,7 @@ class LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Create new account?',
+                      'এখনো যুক্ত নন ?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -211,9 +207,9 @@ class LoginPageState extends State<LoginPage> {
                                 builder: (context) => RegisterPage()));
                       },
                       child: const Text(
-                        'Register',
+                        'এখনই রেজিস্টার',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Color.fromARGB(255, 255, 0, 0),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

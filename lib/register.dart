@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insuranceapp/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   // final VoidCallback showLoginPage;
@@ -33,43 +34,43 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future signUp() async {
-    // try {
-    //   if (passwordConfirmed()) {
-    //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-    //       email: _emailController.text.trim(),
-    //       password: _passwordController.text.trim(),
-    //     );
-    //     // Navigator.push(
-    //     //     context, MaterialPageRoute(builder: (context) =>));
-    //   } else {
-    //     showDialog(
-    //         context: context,
-    //         builder: ((context) {
-    //           return AlertDialog(
-    //             title: Text("Password didn.t match"),
-    //           );
-    //         }));
-    //   }
-    // } on FirebaseAuthException catch (e) {
-    //   showDialog(
-    //       context: context,
-    //       builder: ((context) {
-    //         return AlertDialog(
-    //           title: Text("${e.message}"),
-    //         );
-    //       }));
-    // }
+    try {
+      if (passwordConfirmed()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) =>));
+      } else {
+        showDialog(
+            context: context,
+            builder: ((context) {
+              return AlertDialog(
+                title: Text("Password didn.t match"),
+              );
+            }));
+      }
+    } on FirebaseAuthException catch (e) {
+      showDialog(
+          context: context,
+          builder: ((context) {
+            return AlertDialog(
+              title: Text("${e.message}"),
+            );
+          }));
+    }
   }
 
-  Future adduserDetails(
-      String firstname, String lastname, String email, int age) async {
-    // await FirebaseFirestore.instance.collection('users').add({
-    //   'first name': firstname,
-    //   'last name': lastname,
-    //   'age': age,
-    //   'email': email,
-    // });
-  }
+  // Future adduserDetails(
+  //     String firstname, String lastname, String email, int age) async {
+  //   // await FirebaseFirestore.instance.collection('users').add({
+  //   //   'first name': firstname,
+  //   //   'last name': lastname,
+  //   //   'age': age,
+  //   //   'email': email,
+  //   // });
+  // }
 
   bool passwordConfirmed() {
     if (_passwordController.text.trim() ==

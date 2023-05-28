@@ -63,7 +63,7 @@ class LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 10),
 
                 const Text(
-                  'স্বাগতম শিক্ষার্থী / টিউটর',
+                  'Welocome to E-insurance',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
@@ -86,7 +86,7 @@ class LoginPageState extends State<LoginPage> {
                         controller: _emailController,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'ইমেইল',
+                          hintText: 'email',
                         ),
                       ),
                     ),
@@ -109,7 +109,7 @@ class LoginPageState extends State<LoginPage> {
                       obscureText:
                           !_passwordVisible, //This will obscure text dynamically
                       decoration: InputDecoration(
-                        hintText: 'তোমার পাসওয়ার্ড দাও',
+                        hintText: 'password',
                         border: InputBorder.none,
 
                         // Here is key idea
@@ -149,7 +149,7 @@ class LoginPageState extends State<LoginPage> {
                           //             const ForgotPassPage()));
                         },
                         child: const Text(
-                          "পাসওয়ার্ড ভুলে গেছো ?",
+                          "Forgot Password?",
                           style: TextStyle(
                             color: Color.fromARGB(255, 255, 0, 0),
                             fontWeight: FontWeight.bold,
@@ -168,12 +168,12 @@ class LoginPageState extends State<LoginPage> {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 255, 0, 0),
+                        color: Colors.blue,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Center(
                         child: Text(
-                          'সাইন ইন',
+                          'Sign In',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -191,7 +191,7 @@ class LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'এখনো যুক্ত নন ?',
+                      'Create an account?',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -207,7 +207,7 @@ class LoginPageState extends State<LoginPage> {
                                 builder: (context) => RegisterPage()));
                       },
                       child: const Text(
-                        'এখনই রেজিস্টার',
+                        'Register',
                         style: TextStyle(
                           color: Color.fromARGB(255, 255, 0, 0),
                           fontWeight: FontWeight.bold,
